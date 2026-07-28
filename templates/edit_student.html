@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Edit Student</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        .container{
+            width:500px;
+            margin:40px auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 20px rgba(0,0,0,.15);
+        }
+
+        h2{
+            text-align:center;
+            color:#0d6efd;
+        }
+
+        label{
+            font-weight:bold;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            margin-bottom:15px;
+            border-radius:8px;
+            border:1px solid #ccc;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#0d6efd;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:17px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#084298;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>✏ Edit Student</h2>
+
+<form action="/update_student/{{ student[0] }}" method="POST">
+
+<label>Name</label>
+
+<input
+type="text"
+name="name"
+value="{{ student[1] }}"
+required>
+
+<label>Age</label>
+
+<input
+type="number"
+name="age"
+value="{{ student[2] }}"
+required>
+
+<label>Department</label>
+
+<input
+type="text"
+name="department"
+value="{{ student[3] }}"
+required>
+
+<label>Year</label>
+
+<input
+type="text"
+name="year"
+value="{{ student[4] }}"
+required>
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+value="{{ student[5] }}"
+required>
+
+<label>Attendance (%)</label>
+
+<input
+type="number"
+name="attendance"
+min="0"
+max="100"
+value="{{ student[6] }}"
+required>
+
+<button type="submit">
+💾 Update Student
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

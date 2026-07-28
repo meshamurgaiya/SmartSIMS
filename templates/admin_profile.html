@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admin Profile</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        body{
+            background:#f4f6f9;
+            font-family:Arial, sans-serif;
+        }
+
+        .profile-card{
+
+            width:500px;
+            margin:50px auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+        }
+
+        h1{
+
+            text-align:center;
+            color:#0d6efd;
+
+        }
+
+        table{
+
+            width:100%;
+            margin-top:20px;
+            border-collapse:collapse;
+
+        }
+
+        td{
+
+            padding:15px;
+            border-bottom:1px solid #ddd;
+            font-size:18px;
+
+        }
+
+        .label{
+
+            font-weight:bold;
+            width:180px;
+
+        }
+
+        .back{
+
+            margin-top:25px;
+            width:100%;
+            padding:12px;
+            background:#198754;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:17px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="profile-card">
+
+<h1>👤 Admin Profile</h1>
+
+<table>
+
+<tr>
+
+<td class="label">Name</td>
+
+<td>{{ admin.name }}</td>
+
+</tr>
+
+<tr>
+
+<td class="label">Email</td>
+
+<td>{{ admin.email }}</td>
+
+</tr>
+
+<tr>
+
+<td class="label">Role</td>
+
+<td>{{ admin.role }}</td>
+
+</tr>
+
+<tr>
+
+<td class="label">Phone</td>
+
+<td>{{ admin.phone }}</td>
+
+</tr>
+
+</table>
+
+<a href="/dashboard">
+
+<button class="back">
+
+⬅ Back to Dashboard
+
+</button>
+
+</a>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Add Student | SmartSIMS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+body{
+
+    background:#eef3f8;
+    font-family:Arial,Helvetica,sans-serif;
+
+}
+
+.form-card{
+
+    width:650px;
+    margin:40px auto;
+    background:white;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+}
+
+.form-card h1{
+
+    text-align:center;
+    color:#0d6efd;
+    margin-bottom:30px;
+
+}
+
+.input-group{
+
+    margin-bottom:18px;
+
+}
+
+.input-group label{
+
+    display:block;
+    font-weight:bold;
+    margin-bottom:8px;
+    color:#444;
+
+}
+
+.input-group input{
+
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+.input-group input:focus{
+
+    outline:none;
+    border:2px solid #0d6efd;
+    box-shadow:0 0 8px rgba(13,110,253,.3);
+
+}
+
+.btns{
+
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+
+}
+
+.save-btn{
+
+    background:#198754;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.back-btn{
+
+    background:#6c757d;
+    color:white;
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:10px;
+
+}
+
+.save-btn:hover{
+
+    background:#157347;
+
+}
+
+.back-btn:hover{
+
+    background:#5c636a;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="form-card">
+
+<h1>
+
+<i class="fa-solid fa-user-plus"></i>
+
+Add Student
+
+</h1>
+
+<form action="/save_student" method="POST">
+    <div class="input-group">
+
+<label>
+<i class="fa-solid fa-user"></i>
+Name
+</label>
+
+<input
+type="text"
+name="name"
+placeholder="Enter Student Name"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>
+<i class="fa-solid fa-cake-candles"></i>
+Age
+</label>
+
+<input
+type="number"
+name="age"
+placeholder="Enter Age"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>
+<i class="fa-solid fa-building"></i>
+Department
+</label>
+
+<input
+type="text"
+name="department"
+placeholder="Enter Department"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>
+<i class="fa-solid fa-graduation-cap"></i>
+Year
+</label>
+
+<input
+type="text"
+name="year"
+placeholder="Enter Year"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>
+<i class="fa-solid fa-envelope"></i>
+Email
+</label>
+
+<input
+type="email"
+name="email"
+placeholder="Enter Email Address"
+required>
+
+</div>
+
+<div class="btns">
+
+<button
+type="submit"
+class="save-btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save Student
+
+</button>
+
+<a href="/students"
+class="back-btn">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back
+
+</a>
+
+</div>
+</form>
+
+</div>
+
+</body>
+</html>

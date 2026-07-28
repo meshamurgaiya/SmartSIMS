@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        body{
+            background:#f4f6f9;
+            font-family:Arial, sans-serif;
+        }
+
+        .profile-card{
+            width:700px;
+            margin:40px auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,.15);
+        }
+
+        h1{
+            text-align:center;
+            color:#0d6efd;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+
+        td{
+            padding:14px;
+            border-bottom:1px solid #ddd;
+        }
+
+        .label{
+            font-weight:bold;
+            width:220px;
+        }
+
+        .progress{
+            width:100%;
+            height:22px;
+            background:#ddd;
+            border-radius:20px;
+            overflow:hidden;
+        }
+
+        .progress-bar{
+            height:100%;
+            text-align:center;
+            color:white;
+            line-height:22px;
+            font-weight:bold;
+        }
+
+        .buttons{
+            margin-top:30px;
+            text-align:center;
+        }
+
+        button{
+            padding:12px 20px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            margin:8px;
+            font-size:15px;
+        }
+
+        .edit{
+            background:#0d6efd;
+            color:white;
+        }
+
+        .delete{
+            background:#dc3545;
+            color:white;
+        }
+
+        .back{
+            background:#198754;
+            color:white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="profile-card">
+
+<h1>
+<i class="fa-solid fa-user-graduate"></i>
+Student Profile
+</h1>
+
+<table>
+
+<tr>
+<td class="label">Student ID</td>
+<td>{{ student[0] }}</td>
+</tr>
+
+<tr>
+<td class="label">Name</td>
+<td>{{ student[1] }}</td>
+</tr>
+
+<tr>
+<td class="label">Age</td>
+<td>{{ student[2] }}</td>
+</tr>
+
+<tr>
+<td class="label">Department</td>
+<td>{{ student[3] }}</td>
+</tr>
+
+<tr>
+<td class="label">Year</td>
+<td>{{ student[4] }}</td>
+</tr>
+
+<tr>
+<td class="label">Email</td>
+<td>{{ student[5] }}</td>
+</tr>
+
+<tr>
+<td class="label">Attendance</td>
+
+<td>
+
+<div class="progress">
+
+{% if student[6] >= 75 %}
+
+<div class="progress-bar"
+style="width:{{ student[6] }}%;background:green;">
+{{ student[6] }}%
+</div>
+
+{% elif student[6] >= 50 %}
+
+<div class="progress-bar"
+style="width:{{ student[6] }}%;background:orange;">
+{{ student[6] }}%
+</div>
+
+{% else %}
+
+<div class="progress-bar"
+style="width:{{ student[6] }}%;background:red;">
+{{ student[6] }}%
+</div>
+
+{% endif %}
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="label">Status</td>
+
+<td>
+
+{% if student[6] >= 75 %}
+
+🟢 Safe Student
+
+{% elif student[6] >= 50 %}
+
+🟠 Medium Risk
+
+{% else %}
+
+🔴 High Risk Student
+
+{% endif %}
+
+</td>
+
+</tr>
+
+</table>
+
+<div class="buttons">
+
+<a href="/edit_student/{{ student[0] }}">
+<button class="edit">✏ Edit</button>
+</a>
+
+<a href="/delete_student/{{ student[0] }}"
+onclick="return confirm('Delete this student?')">
+<button class="delete">🗑 Delete</button>
+</a>
+
+<a href="/students">
+<button class="back">⬅ Back</button>
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

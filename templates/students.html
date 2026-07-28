@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        #searchInput{
+            width:300px;
+            padding:10px;
+            font-size:16px;
+            border-radius:8px;
+            border:1px solid #ccc;
+            margin-bottom:20px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#0d6efd;
+            color:white;
+        }
+
+        th,td{
+            padding:12px;
+            text-align:center;
+        }
+
+        .excel-btn{
+            background:#198754;
+            color:white;
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            margin-left:10px;
+            font-size:15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+
+{% for category, message in messages %}
+
+<div class="success-msg">
+{{ message }}
+</div>
+
+{% endfor %}
+
+{% endif %}
+{% endwith %}
+
+<h2>🎓 Student List</h2>
+
+<a href="/add_student">
+    <button>Add Student</button>
+</a>
+
+<a href="/export_excel">
+    <button class="excel-btn">
+        📥 Export to Excel
+    </button>
+</a>
+
+<a href="/export_pdf">
+    <button class="excel-btn"
+            style="background:#dc3545;">
+        📄 Export to PDF
+    </button>
+</a>
+
+<br><br>
+
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Search Student..."
+onkeyup="searchStudent()">
+
+<br><br>
+
+<table border="1" id="studentTable">
+
+<tr>
+
+<th>S.No</th>
+<th>Name</th>
+<th>Age</th>
+<th>Department</th>
+<th>Year</th>
+<th>Email</th>
+<th>Action</th>
+
+</tr>
+
+{% for student in students %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+
+<td>
+
+<a href="/student_profile/{{ student[0] }}"
+style="text-decoration:none;color:#0d6efd;font-weight:bold;">
+
+{{ student[1] }}
+
+</a>
+
+</td>
+
+<td>{{ student[2] }}</td>
+<td>{{ student[3] }}</td>
+<td>{{ student[4] }}</td>
+<td>{{ student[5] }}</td>
+
+<td>
+
+<a href="/edit_student/{{ student[0] }}">
+<button>Edit</button>
+</a>
+
+<a href="/delete_student/{{ student[0] }}"
+onclick="return confirm('Delete this student?')">
+
+<button style="background:red;color:white;">
+Delete
+</button>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<script>
+
+function searchStudent(){
+
+let input=document.getElementById("searchInput").value.toUpperCase();
+
+let table=document.getElementById("studentTable");
+
+let tr=table.getElementsByTagName("tr");
+
+for(let i=1;i<tr.length;i++){
+
+let td=tr[i].getElementsByTagName("td")[1];
+
+if(td){
+
+let txt=td.textContent || td.innerText;
+
+if(txt.toUpperCase().indexOf(input)>-1){
+
+tr[i].style.display="";
+
+}
+else{
+
+tr[i].style.display="none";
+
+}
+
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <title>SmartSIMS Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="dashboard-body">
+
+    <div class="login-container">
+
+        <h1>SmartSIMS</h1>
+        <p>Smart Student Intelligence & Management System</p>
+
+        <form action="/login" method="POST">
+
+    <input type="email" name="email" placeholder="Enter Email">
+
+    <input type="password" name="password" placeholder="Enter Password">
+
+    <button type="submit">Login</button>
+
+</form>
+
+    </div>
+
+</body>
+</html>

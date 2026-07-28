@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Analytics</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+
+        body{
+            background:#f4f6f9;
+            font-family:Arial;
+        }
+
+        .container{
+            width:90%;
+            margin:auto;
+            padding:20px;
+        }
+
+        h1{
+            text-align:center;
+            color:#0d6efd;
+        }
+
+        .cards{
+            display:flex;
+            gap:20px;
+            flex-wrap:wrap;
+            justify-content:center;
+            margin:30px 0;
+        }
+
+        .card{
+            width:220px;
+            background:white;
+            padding:20px;
+            text-align:center;
+            border-radius:12px;
+            box-shadow:0 5px 15px rgba(0,0,0,.15);
+        }
+
+        .card h2{
+            color:#0d6efd;
+        }
+
+        .chart-box{
+            width:500px;
+            margin:40px auto;
+            background:white;
+            padding:20px;
+            border-radius:12px;
+            box-shadow:0 5px 15px rgba(0,0,0,.15);
+        }
+
+        button{
+            padding:12px 20px;
+            background:#198754;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        .center{
+            text-align:center;
+            margin-top:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📊 Student Analytics</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>Total Students</h2>
+<h1>{{ total_students }}</h1>
+</div>
+
+<div class="card">
+<h2>Safe Students</h2>
+<h1>{{ safe_students }}</h1>
+</div>
+
+<div class="card">
+<h2>High Risk</h2>
+<h1>{{ high_risk }}</h1>
+</div>
+
+<div class="card">
+<h2>Average Attendance</h2>
+<h1>{{ average_attendance }}%</h1>
+</div>
+
+</div>
+
+<div class="chart-box">
+
+<h2 align="center">
+Department Statistics
+</h2>
+
+<canvas id="chart"></canvas>
+
+</div>
+
+<div class="center">
+
+<a href="/dashboard">
+<button>
+⬅ Back to Dashboard
+</button>
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const ctx=document.getElementById("chart");
+
+new Chart(ctx,{
+
+type:"bar",
+
+data:{
+
+labels:{{ departments|tojson }},
+
+datasets:[{
+
+label:"Students",
+
+data:{{ counts|tojson }},
+
+backgroundColor:[
+"#0d6efd",
+"#198754",
+"#ffc107",
+"#dc3545",
+"#6f42c1",
+"#20c997",
+"#fd7e14"
+]
+
+}]
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
