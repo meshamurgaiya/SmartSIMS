@@ -14,7 +14,7 @@ app.secret_key = "smartsims123"
 
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "your_password"
+app.config["MYSQL_PASSWORD"] = "mesha@17072007"
 app.config["MYSQL_DB"] = "studentdb"
 
 mysql = MySQL(app)
